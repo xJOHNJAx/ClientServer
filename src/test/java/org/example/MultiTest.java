@@ -1,7 +1,7 @@
 package org.example;
 
-import org.junit.Test;
-import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.concurrent.*;
@@ -21,10 +21,10 @@ public class MultiTest {
         client.sendRequests(requests, server);
         List<Response> responses = client.getResponses();
 
-        Assert.assertEquals(requests.size(), responses.size());
+        Assertions.assertEquals(requests.size(), responses.size());
 
         for (int i = 0; i < responses.size(); i++) {
-            Assert.assertEquals(100 - i, responses.get(i).value);
+            Assertions.assertEquals(100 - i, responses.get(i).value);
         }
 
         executor.shutdown();

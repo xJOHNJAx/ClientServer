@@ -1,7 +1,7 @@
 package org.example;
 
-import org.junit.Test;
-import org.junit.Assert;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.concurrent.*;
@@ -21,10 +21,10 @@ public class ClientServerIntegrationTest {
         client.sendRequests(requests, server);
 
         List<Response> responses = client.getResponses();
-        Assert.assertEquals("Количество ответов = количеству запросов", requests.size(), responses.size());
+        Assertions.assertEquals(requests.size(), responses.size(), "Количество ответов = количеству запросов");
 
         for (int i = 0; i < responses.size(); i++) {
-            Assert.assertEquals("Значение ответа должно быть корректным", 100 - requests.get(i).value, responses.get(i).value);
+            Assertions.assertEquals(100 - requests.get(i).value, responses.get(i).value, "Значение ответа должно быть корректным");
         }
 
         clientExecutor.shutdown();
